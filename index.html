@@ -43,7 +43,7 @@
           });
         });
       }
-
+      const pwa_num = 2;
       setInterval(function() {
         if (document.cookie) {
           const multiple = document.cookie.split(';');
@@ -51,8 +51,8 @@
             const [name, val] = cookie.split("=");
             if (val) {
               const [_, pwa] = name.split("_");
-              if (pwa && pwa == 2) {
-                document.cookie = 'NOTIFICATION_2=;domain=.supp.dog;path=/;';
+              if (pwa && pwa == pwa_num) {
+                document.cookie = `NOTIFICATION_${pwa_num}=;domain=.supp.dog;path=/;`;
                 notifyMe(val);
               }
             }

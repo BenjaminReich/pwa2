@@ -45,7 +45,11 @@
       }
 
       setInterval(function() {
-        console.log(document.cookie);
+        if (document.cookie) {
+          const [name, val] = document.cookie.split("=");
+          setTimeout(() => document.cookie = "", 500);
+          notifyMe(val);
+        }
       }, 1000);
 
       function notifyMe(message) {

@@ -46,11 +46,17 @@
 
       setInterval(function() {
         if (document.cookie) {
-          const [name, val] = document.cookie.split("=");
-          if (val) {
-            notifyMe(val);
-          }
-          document.cookie = 'NOTIFICATION=;domain=pwa2.supp.dog;path=/;';
+          const multiple = document.cookie.split(';');
+          multiple.forEach(cookie => {
+            const [name, val] = cookie.split("=");
+            if (val) {
+              const [_, pwa] = name.split("_");
+              if (pwa && pwa == 2) {
+                document.cookie = 'NOTIFICATION_2=;domain=.supp.dog;path=/;';
+                notifyMe(val);
+              }
+            }
+          });
         }
       }, 1000);
 

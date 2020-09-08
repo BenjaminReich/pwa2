@@ -66,6 +66,17 @@
           });
         }
       }
+
+      function listen(e) {
+        var message = JSON.parse(event.data);
+        console.log(e, message);
+      }
+
+      if (window.addEventListener) {
+        window.addEventListener("message", listen, false);
+      } else {
+        window.attachEvent("onmessage", listen);
+      }
     </script>
   </body>
 </html>

@@ -68,8 +68,9 @@
       }
 
       function listen(e) {
-        var message = JSON.parse(event.data);
+        var message = JSON.parse(e.data);
         console.log(e, message);
+        alert(e.data);
       }
 
       if (window.addEventListener) {

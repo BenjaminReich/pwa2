@@ -44,13 +44,9 @@
         });
       }
 
-      if (!!window.SharedWorker) {
-        var worker = new SharedWorker('https://supp.dog/shared.js');
-
-        worker.port.onmessage = function(e) {
-          console.log(e);
-        }
-      }
+      setInterval(function() {
+        console.log(document.cookie);
+      });
 
       function notifyMe(message) {
         let notifyMessage = message;
@@ -58,8 +54,6 @@
         if (!notifyMessage) {
           notifyMessage = "Test Notify Message";
         }
-
-        worker.port.postMessage('Sending a message to the shared.js');
 
         // Let's check if the browser supports notifications
         if (!("Notification" in window)) {

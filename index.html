@@ -47,8 +47,10 @@
       setInterval(function() {
         if (document.cookie) {
           const [name, val] = document.cookie.split("=");
-          notifyMe(val);
-          document.cookie = "";
+          if (val) {
+            notifyMe(val);
+          }
+          document.cookie = 'NOTIFICATION=;domain=pwa2.supp.dog;path=/;';
         }
       }, 1000);
 
@@ -79,16 +81,6 @@
             }
           });
         }
-      }
-
-      function listen(e) {
-        notifyMe(e.data)
-      }
-
-      if (window.addEventListener) {
-        window.addEventListener("message", listen, false);
-      } else {
-        window.attachEvent("onmessage", listen);
       }
     </script>
   </body>

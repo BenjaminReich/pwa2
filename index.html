@@ -47,8 +47,8 @@
       setInterval(function() {
         if (document.cookie) {
           const [name, val] = document.cookie.split("=");
-          setTimeout(() => document.cookie = "", 500);
           notifyMe(val);
+          document.cookie = "";
         }
       }, 1000);
 
